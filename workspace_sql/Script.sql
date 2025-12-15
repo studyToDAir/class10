@@ -233,3 +233,23 @@ WHERE
 -- Q6
 
 
+
+
+/* 함수 */
+SELECT ename, upper(ename), lower(ename), initcap(ename)
+FROM emp;
+
+SELECT 1 FROM dual;
+SELECT upper('aBc'), lower(123), upper( lower('aBc') ) FROM dual;
+
+SELECT * FROM emp
+WHERE lower(ename) LIKE lower('%aM%');
+
+SELECT ename, length(ename) FROM emp;
+
+SELECT * FROM emp
+WHERE length(ename) = 5;
+
+
+
+
