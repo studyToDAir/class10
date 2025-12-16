@@ -250,6 +250,173 @@ SELECT ename, length(ename) FROM emp;
 SELECT * FROM emp
 WHERE length(ename) = 5;
 
+SELECT length('a'), length('한'), lengthb('a'), lengthb('한') FROM dual;
+
+-- substr(대상, 시작하는 곳, 몇 개)
+SELECT 
+	job, 
+	substr(job, 1, 2), 
+	substr(job, 3, 3), 
+	substr(job, 5)
+FROM emp;
+-- 사원 이름을 두번째부터 3글자만 출력
+SELECT substr(ename, 2, 3) FROM emp;
+SELECT substr(ename, 2, 3000) FROM emp; -- 마지막 숫자가 커도 끝까지만 출력
+SELECT substr(ename, 20, 3) FROM emp; -- 실제 길이보다 시작이 크면 null
+
+SELECT ename, substr(ename, -3, 2) FROM emp;
+SELECT ename, substr(ename, -30, 2) FROM emp;
+
+-- replace(대상, 바뀔 문자, 바꿀 문자)
+-- "모든" 바뀔 문자를 바꿀 문자로 변경
+SELECT 
+	'a-b-c',
+	replace('a-b-c', '-', ' '),
+	replace('a-b-c', '-', ';'),
+	replace('a-b-c', '-'),
+	replace('a-b-c', '-', '')
+FROM dual;
+
+-- 사원 이름에 A를 모두 'abc'로 교체
+SELECT ename, replace(ename, 'A', 'abc') FROM emp;
+
+-- lpad, rpad
+-- 모자르면 채우고
+-- 넘치면 자른다
+-- 즉, 두번째 값의 길이로 만들어준다
+SELECT lpad(ename, 10, '#'), lpad(ename, 5, '#') FROM emp;
 
 
+
+-- 문제1
+--	ename에서 앞에 두 글자만 출력
+--	substr, lpad, replace
+--	WARD >> WA, SMITH >> SM
+SELECT 
+	ename, 
+	substr(ename, 1, 2), 
+	lpad(ename, 2, ' '),
+	-- 원본에서 
+	-- 3번째 부터 끝까지 문자를 
+	-- 없애자
+	replace(ename, substr(ename, 3), '' )
+FROM emp;
+
+-- 문제2
+--	ename의 앞 두글자만 원본을 출력하고
+--	나머지는 4개의 *로 표시
+--	WARD >> WA****, SMITH >> SM**** 
+SELECT
+	substr(ename, 1, 2),
+	rpad(substr(ename, 1, 2), 6, '*')
+FROM emp;
+-- 문제3
+--	ename의 앞 두글자만 원본을 출력하고
+--	나머지는 *로 출력
+-- 	단, 전체 길이는 원래 이름의 길이만큼
+--	WARD >> WA**, SMITH >> SM*** 
+
+SELECT
+	substr(ename, 1, 2),
+	rpad(substr(ename, 1, 2), LENGTH(ename), '*')
+FROM emp;
+-- 문제 4
+-- 앞 두글자만 *처리
+SELECT
+	ename,
+	substr(ename, 3),
+	lpad(substr(ename, 3), LENGTH(ename), '*')
+FROM emp;
+	
+SELECT 'ab' || 'cd' || 'efg' FROM dual;
+SELECT empno || ':' || ename FROM emp;
+
+SELECT 
+	'[' || '  _ _oracle_ _   ' || ']',
+	'[' || trim('  _ _oracle_ _   ') || ']'
+FROM dual;
+
+SELECT
+	round(14.46),
+	round(14.46, 0),
+	round(14.46, 1), -- 14.5
+	round(14.46, -1)
+FROM emp;
+
+SELECT
+	trunc(14.46),
+	trunc(14.46, 0),
+	trunc(14.46, 1),
+	trunc(14.46, -1),
+	trunc(-14.46)
+FROM emp;
+
+SELECT
+	ceil(3.14),
+	floor(3.14),
+	ceil(-3.14),
+	floor(-3.14),
+	trunc(-3.14)
+FROM emp;
+
+SELECT
+	mod(15, 6), mod(15, 0)
+FROM dual;
+
+SELECT 15/6, 15/0 FROM dual;
+
+SELECT 
+	mod(6, 3), 
+	mod(7, 3), 
+	mod(8, 3), 
+	mod(9, 3)
+FROM dual;
+
+SELECT sysdate FROM dual;
+
+SELECT to_char(sysdate, 'yyyy/mm/dd hh24:mi:ss') FROM dual;
+SELECT * FROM emp;
+SELECT to_char(
+         sysdate,
+         'yyyy"년" mm"월" dd"일" hh24"시" mi"분" ss"초"'
+       )
+FROM dual;
+
+SELECT * FROM emp
+WHERE hiredate > to_date('1981/06/01', 'yyyy/mm/dd');
+
+SELECT 
+	sal, comm, 
+	nvl(comm, 0), 
+	sal+nvl(comm, 0), 
+	sal+comm,
+	nvl(to_char(comm), 'N/A')
+FROM emp;
+
+SELECT job,sal,
+	decode(job,						-- job이
+			'MANAGER', sal*1.1,		-- 정확히 MANAGER라면
+			'SALESMAN', sal*1.05,
+			'ANALYST', sal,
+			sal*1.03				-- 위 조건에 없다면
+			) AS upsal
+FROM emp;
+
+SELECT job, sal,
+	CASE job
+		WHEN 'MANAGER' THEN sal*1.1
+		WHEN 'SALESMAN' THEN sal*1.05
+		WHEN 'ANALYST' THEN sal
+		ELSE sal*1.03
+	END upsal
+FROM emp;
+
+SELECT comm,
+	CASE 
+		WHEN comm IS NULL THEN '원래 없어요'
+		WHEN comm = 0 THEN '수당 없음'
+		WHEN comm > 0 THEN '수당: ' || comm
+	END text
+FROM emp;
+	
 
