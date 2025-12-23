@@ -26,6 +26,69 @@
         /* 100 ~ 1000 까지 100단위로 사용 가능 */
         .fw-2000 { font-weight: 2000; }
         .fw-bold { font-weight: bold; }
+
+        .fake-h1 {
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .border {
+            border: 1px solid red;
+        }
+        .align-right {
+            text-align: right;
+        }
+        .align-center {
+            text-align: center;
+        }
+        .align-left {
+            text-align: left;
+        }
+        .align-justify{
+            text-align: justify;
+        }
+        .spacing {
+            /* letter-spacing: 1em; */
+            letter-spacing: -0.1em;
+        }
+        .lh {
+            line-height: 300%;
+        }
+        .middle {
+            border: 1px solid red;
+            height: 100px;
+            line-height: 100px;
+
+            text-align : center;
+        }
+        .nowrap {
+            border: 1px solid red;
+            width: 50vw;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .text {
+            border: 1px solid red;
+            width: 200px;
+        }
+        .word-wrap{
+            /* 한 단어가 너무 길면 튀어나오니까
+                단어 중간에라도 다음 줄에 보여주는 기능 */
+            word-wrap: break-word;
+        }
+        .word-break {
+            word-break: break-all;
+        }
+
+        .td1 {
+            text-decoration: underline;
+        }
+        .td2 {
+            text-decoration: line-through;
+        }
     </style>
 </head>
 <body>
@@ -44,8 +107,68 @@
     <div class="fw-1000">1000</div>
     <div class="fw-2000">2000</div>
     <div class="fw-bold">bold</div>
+    <hr>
     <h1>h1</h1>
     <div class="fake-h1">fake-h1</div>
+    <hr>
+    <div class="align-right border">align-right</div>
+    <div class="align-center border">align-center</div>
+    <div class="align-left border">align-left</div>
+    <div class="align-justify">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam esse distinctio totam, sequi quasi ea ducimus magnam possimus, enim, nobis culpa beatae? Nam sapiente facilis quod dolorem minima nobis consectetur!
+    </div>
+    <a href="asdf" class="align-right border">a 태그</a>
+    <div class="align-right border">
+        <a href="asdf">a 태그</a>
+    </div>
+    <div class="spacing">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam error laborum accusantium, modi asperiores eligendi quisquam quas similique cupiditate. Esse harum similique ex neque ratione optio repellendus repudiandae veniam quis.
+    </div>
+    <div class="lh">
+        첫번째 줄<br>
+        두번째 줄
+    </div>
+    <div class="middle">
+        세로 방향 중앙 정렬
+    </div>
+
+    <hr>
+    <div class="nowrap" title="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, doloremque eum ipsa expedita, nisi velit enim ipsum, rerum assumenda esse quae. Porro perspiciatis id tempora, nemo delectus excepturi veritatis repellat!">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, doloremque eum ipsa expedita, nisi velit enim ipsum, rerum assumenda esse quae. Porro perspiciatis id tempora, nemo delectus excepturi veritatis repellat!
+    </div>
+
+    <div class="text">
+        asdkiuhsdikfuhwefihwefiuhwefiluhwefilhwef
+        asdfas
+        wef
+        wefopijhwef
+        asdfohwef-ohwefoihwoefihw-efoihowefih
+        weiouhwefooiuhwef
+    </div>
+    <div class="text word-wrap">
+        asdkiuhsdikfuhwefihwefiuhwefiluhwefilhwef
+        asdfas
+        wef
+        wefopijhwef
+        asdfohwefohwefoihwoefihwefoihowefih
+        weiouhwefooiuhwef
+    </div>
+    <div class="text word-break">
+        asdkiuhsdikfuhwefihwefiuhwefiluhwefilhwef
+        asdfas
+        wef
+        wefopijhwef
+        asdfohwefohwefoihwoefihwefoihowefih
+        weiouhwefooiuhwef
+    </div>
+    <div class="td1">
+        글씨 몇자
+    </div>
+    <div class="td2">
+        글씨 몇자
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 
 </html>
