@@ -164,16 +164,67 @@ public class IfExam_01 {
 		// "양수", 0, "음수" 판단하여 출력
 		// 문제2
 		// 홀수인지 짝수인지 판단하여 출력
+		System.out.println("문제1 : 수를 입력하세요");
+		
+		Scanner s1 = new Scanner(System.in); 			// 스캐너 선언
+		int num1 = s1.nextInt();
+		if(num1 == 0) {
+			System.out.println("니가 입력값: "+ num1 +"은(는) 0!");
+		} else if(num1 >= 0) {
+			System.out.println("니가 입력값: "+ num1 +"은(는) 양수!");
+//		} else if(num1 < 0) {
+		} else {
+			System.out.println("니가 입력값: "+ num1 +"은(는) 음수!");
+		}
+		
+		if( num1 % 2 == 0 ) {
+			System.out.println("짝수");
+		} else if( num1 % 2 != 0 ) {
+			System.out.println("홀수");
+		}
+		
 		
 		// 문제3
 		// 임의의 두 수 x, y를 받아서
 		// 둘 중에 큰 값 출력
+		s1 = new Scanner(System.in);
+		System.out.print("문제3 : 첫번째 수");
+		num1 = s1.nextInt();
+		System.out.print("두번째 수");
+		int num2 = s1.nextInt();
+//		if(num1 > num2) {
+//			System.out.printf("%d와 %d 중 %d가 크다", num1, num2, num1);
+//		} else if(num1 < num2) {
+//			System.out.printf("%d와 %d 중 %d가 크다", num1, num2, num2);
+//		} else {
+//			System.out.printf("%d와 %d는 같다");
+//		}
+		int g = num1;
+		if(num1 > num2) {
+			g = num1;
+		} else {
+			g = num2;
+		}
+		System.out.println(num1+"과 "+num2+"중 "+g+"가 크다");
+		
 		
 		// 문제4
 		// 임의의 money를 입력 받아서
 		// 7000원 이상이면 "택시타자" 출력
 		// 7000~3000 사이면 "버스타자" 출력
 		// 3000 미만임면 "걸어가자" 출력
+		System.out.print("문제4 : 돈을 입력:");
+		s1 = new Scanner(System.in);
+		num1 = s1.nextInt();
+		if(num1 >= 7000) {
+			System.out.println("택시");
+//		} else if (num1 < 7000 && num1 >= 3000) {
+		} else if (num1 >= 3000) {
+			System.out.println("버스");
+		} else {
+			System.out.println("걷기");
+		}
+		
 		
 		// ----- 도전해 볼만한 ------
 		// 문제5
