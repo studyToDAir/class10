@@ -132,6 +132,10 @@ public class ForExam_03 {
 			System.out.println(c);
 		}
 		
+//		for(int x=3, y=7; x<5; x++, y+=3) {
+//			
+//		}
+
 		// --- 꼭 풀 수 있어야 함 ---
 		// 문제1
 		// 1~5까지 출력하되 홀수인지 짝수인지 같이 출력
@@ -219,32 +223,131 @@ public class ForExam_03 {
 		// 문제2
 		// 구구단 단마다 옆으로 출력
 		// 2x1=2 2x2=4...
+		for(int dan=2; dan<=9; dan++) {
+			System.out.println(dan+"단---");
+
+			for(a=1; a<=9; a = a + 1) {
+				System.out.print(dan +" x "+ a +" = "+ (dan * a) +" ");
+			}
+			System.out.println();
+		}
 		
 		// 문제3
 		// 구구단 3단씩 옆으로 출력
 		// 2x1=2 3x1=3 4x1=4
 		// 2x2=4 3x2=6 4x2=8
 		// 2x3=6...
+		System.out.println("2x1=2 3x1=3 4x1=4");
+		System.out.println("2x2=4 3x2=6 4x2=8");
+//		for(int g = 1; g<=9; g++) {
+//			System.out.println("2x"+g+"="+(2*g)+" 3x"+g+"="+(3*g)+" 4x"+g+"="+(4*g));
+//		}
+//		for(int g = 1; g<=9; g++) {
+//			System.out.println("5x"+g+"="+(5*g)+" 6x"+g+"="+(6*g)+" 7x"+g+"="+(7*g));
+//		}
+		
+//		for(int g = 1; g<=9; g++) {
+//			for(int h=2; h<=4; h++) {
+//				System.out.print(h+"x"+g+"="+(h*g)+", ");
+//			}
+//			System.out.println();
+//		}
+//		for(int g = 1; g<=9; g++) {
+//			for(int h=5; h<=7; h++) {
+//				System.out.print(h+"x"+g+"="+(h*g)+", ");
+//			}
+//			System.out.println();
+//		}
+
+//		int j = 2;
+//		for(int g = 1; g<=9; g++) {
+//			for(int h=j; h<=(j+3-1); h++) {
+//				System.out.print(h+"x"+g+"="+(h*g)+", ");
+//			}
+//			System.out.println();
+//		}
+//		System.out.println();
+//		j = j + 3;
+//		for(int g = 1; g<=9; g++) {
+//			for(int h=j; h<=(j+3-1); h++) {
+//				System.out.print(h+"x"+g+"="+(h*g)+", ");
+//			}
+//			System.out.println();
+//		}
+//		
+		System.out.println("--- 문제3 ---");
+		for(int j=2; j<=9; j = j + 3) {
+			for(int g = 1; g<=9; g++) {
+				for(int h=j; h<=(j+3-1); h++) {
+					if(h <= 9) {
+						System.out.print(h+"x"+g+"="+(h*g)+", ");
+					}
+				}
+				System.out.println();
+			}
+			System.out.println();
+		}
 		
 		// 문제4
 		// 주사위 2개를 굴려서
 		// 나올 수 있는 모든 조합 출력
 		// [1,1] [1,2] [6,6]
+		System.out.println("--- 문제4 ---");
+		for(int g=1; g<=6; g++) {
+			for(int h=1; h<=6; h++) {
+				System.out.println("["+g+", "+h+"]");
+			}
+		}
 		
 		// 문제5
 		// 주사위 2개를 굴려서
 		// 합 별로 출력
 		// 합2 : [1,1]
 		// 합3 : [1,2] [2,1]
+		System.out.println("--- 문제5 ---");
+		
+//		for(int g=1; g<=6; g++) {
+//			for(int h=1; h<=6; h++) {
+//				if(g+h == 4)
+//					System.out.print("["+g+", "+h+"]");
+//			}
+//		}
+		for(int j=2;j<=12; j++) {
+			System.out.print("합 "+j+" : ");
+			for(int g=1; g<=6; g++) {
+				for(int h=1; h<=6; h++) {
+					if(g+h == j)
+						System.out.print("["+g+", "+h+"]");
+				}
+			}
+			System.out.println();
+		}
+
 		
 		// 문제6
 		// 주사위 2개를 굴려서 나올 조합에서
 		// 중복 없이 출력
 		// 예: [1,2] [2,1] 중복이라서 [1,2]
+		System.out.println("--- 문제6 ---");
+		for(int g=1; g<=6; g++) {
+			for(int h=g; h<=6; h++) {
+				System.out.print("["+g+", "+h+"]");
+			}
+			System.out.println();
+		}
 		
-		// 월요일 오전에 푸는 시간 주고
-		// 오후에 풀이
-		
+		System.out.println("--- 문제6-1 ---");
+		for (int h=2; h<=12;h++) {
+			System.out.print("합 "+h+" : ");
+			for(int v=1;v<=6;v++) {
+				for(int b1=1;b1<=6;b1++) {
+					if (v + b1 == h && v >= b1) {
+						System.out.print("[ "+v+", "+b1+" ]");
+					}
+				}
+			}
+			System.out.println("\n");
+		}
 	}
 
 }

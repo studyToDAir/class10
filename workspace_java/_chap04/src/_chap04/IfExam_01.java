@@ -230,22 +230,121 @@ public class IfExam_01 {
 		// 문제5
 		// '가위', '바위', '보' 입력 받아서
 		// 5-1 컴퓨터는 항상 '바위'만 낼 경우
+		Scanner scan3 = new Scanner(System.in);
+		String rsp = scan3.nextLine();
+		// 내가 이기는 경우 : '보'
+//		if("보" == rsp)
+		if("보".equals(rsp)) {
+			System.out.println("이김");
+		} else if (rsp.equals("바위")) {
+			System.out.println("비김");
+		} else {
+			System.out.println("짐");
+		}
 		// 5-2 컴퓨터도 random으로
+		int com_int = (int)(Math.random() * 3);
+		System.out.println("com_int : "+ com_int);
+
+		String com_str = "보";
+		if(com_int == 0) {
+			com_str = "가위";
+		} else if(com_int == 1) {
+			com_str = "바위";
+		} else {
+			com_str = "보";
+		}
+		System.out.println("com_str : "+ com_str);
 		// '이겼다', '비겼다', '졌다' 출력
+		// 1. 컴퓨터가 바위를 냈을 때
+		if("바위".equals(com_str)){
+			if("보".equals(rsp)) {
+				System.out.println("이김");
+			} else if (rsp.equals("바위")) {
+				System.out.println("비김");
+			} else {
+				System.out.println("짐");
+			}
+		}
+		// 2. 내가 이기는 경우
+		if( ("보".equals(rsp) && "주먹".equals(com_str))
+			|| ("주먹".equals(rsp) && "가위".equals(com_str))	
+			|| ("가위".equals(rsp) && "보".equals(com_str)) ) {
+			
+			System.out.println("이김");
+			
+		} else if( rsp.equals(com_str) ) {
+			System.out.println("비김");
+		} else {
+			System.out.println("짐");
+		}
 		
 		// 문제6
 		// 임의 세 수 x, y, z를 받아서
 		// z가 x~y 사이에 있는지(포함) 판단
+		int a = 27;
+		int b = 10;
+		int c = 17;
+		
+		if(a>=b) {
+			if( a <= c && c <= b ) {
+				System.out.println("포함");
+			}else {
+				System.out.println("포함아님");
+			}
+		} else {
+			if( b <= c && c <= a ) {
+				System.out.println("포함");
+			}else {
+				System.out.println("포함아님");
+			}
+		}
+//		if ( (n5 <= n && n5 >= n2) || (n5 => n && n5 <= n2) ) {
+//			 System.out.println("포함됨");
+//		} else {
+//			 System.out.println("포함되지 않음");
+//		}
+//		if(c >= (a<=b? a : b) && ...)
+		
 		
 		// 문제7
 		// 月을 입력 받아서
 		// 계절 출력
 		// 13, -1등 입력하면 "정확히 입력해주세요" 출력
+		int month = 1;
+		if(month >= 1 && month <= 12) {
+			if(month == 1 || month == 2 || month == 12) {
+				System.out.println("겨울");
+			} else if(month >= 3 || month <= 5) {
+				System.out.println("봄");
+			}/////
+		} else {
+			System.out.println("1~12까지만 입력해 주세요");
+		}
 		
 		// 문제8
 		// 임의의 수를 입력받아서 다음과 같이 출력
 		// 예 : 125
 		// 입력한 수는 100보다 크고, 양수이고, 홀수입니다.
+		
+		int num = 125;
+		// 1.
+		if(num > 100 && num >= 0 && num%2 == 1) {
+			System.out.println(num +"은 100보다 크고, 양수이고, 홀수입니다.");
+		}/////
+		// 2.
+		String result1 = "작고";
+		String result2 = "음수";
+		String result3 = "홀수";
+		if(num >= 100) {
+			result1 = "크고";
+		}
+		if(num >= 0) {
+			result2 = "양수";
+		}
+		if(num%2 == 0) {
+			result3 = "짝수";
+		}
+		System.out.println(num +"은 100보다 "+ result1 +", "+ result2 +"이고, "+ result3 +"입니다.");
 		
 		// 문제9
 		// 온도를 입력받아서 다음과 같이 출력
@@ -253,29 +352,75 @@ public class IfExam_01 {
 		// 영하 3도 입니다
 		// 예 : 5
 		// 영상 5도 입니다
+		num = -3;
+		if(num <= 0) {
+			System.out.println("영하 "+ (num*-1) + "도 입니다");
+		} else {
+			System.out.println("영상 "+ num +"도 입니다");
+		}
 		
 		// ----- 멘탈 챙길 자신 있으면 ------
 		// 문제10
 		// 시, 분을 입력 받아서 35분 후의 시, 분을 출력
 		// 3, 51을 입력받으면
 		// 4시 26분 출력
+		int h = 3;
+		int m = 51;
+		int after = 35;
+		// 분+35분 >= 60 이면 시각이 바뀐다
+		if(m + after >= 60) {
+			System.out.println( (h+1) +"시 "+ (m+after-60)+ "분");
+		} else {
+			System.out.println( (h) +"시 "+ (m+after)+ "분");
+		}
 		
 		// 문제11
 		// 두자리 숫자를 입력받아서
 		// 10의 자리와 1의 자리가 같은지 판단
 		// 예 : 77 => 같음, 94 => 다름
+		num = 77;
+		int num_10 = 77/10;
+		int num_1 = 77%10;
+		if(num_10 == num_1) {
+			System.out.println("같음");
+		}
 		
 		// 문제12
 		// 1~99까지 369게임
 		// 임의의 수를 받아서 3,6,9 숫자가 있으면 "박수" 출력
 		// 없으면 그 숫자 그대로 출력
 		// 예 : 33 => 박수, 31 => 박수, 12 => 12, 14 => 14
+		num = 31;
+		num_10 = num / 10;
+		num_1 = num % 10;
+		if((num_10 != 0 && num_10 % 3 == 0) 
+				|| (num_1 != 0 && num_1 % 3 == 0)) {
+			System.out.println("박수");
+		} else {
+			System.out.println(num);
+		}
+		
+		/*
+		(thr % 10 == 3 || thr % 10 == 6 || thr % 10 == 9)
+		의 반대
+		!(thr % 10 == 3 || thr % 10 == 6 || thr % 10 == 9)
+		thr % 10 != 3 && ...
+		 * 
+		 */
 		
 		// 문제13
 		// 사각형의 한쪽 모서리 : x1:10, y1:20
 		// 반대편 모서리 : x2:90, y2:100
 		// 입력받은 두 수를 좌표로 하는 점이 사각형에 겹치는가
-		
+		int x1 = 10, x2 = 90;
+		int y1 = 20, y2 = 100;
+		int x3 = 70, y3 = 50;
+		if( (x3 >= x1 && x <= x2)
+				&& (y3 >= y1 && y3 <= y2) ) {
+			System.out.println("겹친다");
+		} else {
+			System.out.println("안겹친다");
+		}
 		
 		// Scanner 사용법
 		Scanner scan = new Scanner(System.in);
@@ -283,12 +428,21 @@ public class IfExam_01 {
 		// 글씨 받기
 //		String input = scan.nextLine();
 		// 숫자 받기
-		int num = scan.nextInt();
-		System.out.println("num: "+ num);
+		int num5 = scan.nextInt();
+		System.out.println("num: "+ num5);
 		
 		Scanner scan2 = new Scanner(System.in);
 		String aa = scan2.nextLine();
 		System.out.println("aa : "+ aa);
+		
+		// 모두 && 일 때
+		// false를 찾으면 끝난다
+		num = 3;
+		if( num == 2 && num / 0 == 0 ) {
+			
+		}
+		// 모두 || 일 때
+		// true를 찾으면 뒤에 연산을 하지 않는다
 		
 	}
 
