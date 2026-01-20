@@ -56,6 +56,8 @@ public class ArrayListExam_05 {
 		list3.add(2);
 		
 		int a = (int)list3.get(0);
+		
+		
 	}
 
 }
