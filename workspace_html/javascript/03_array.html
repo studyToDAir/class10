@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 배열 선언 방법 1
+        const arr1 = [];
+        // 배열 선언 방법 2
+        const arr2 = new Array();
+
+        // 값을 미리 알고 있을 때
+        const arr3 = [1, 2, "글씨", 3.14]
+        const arr4 = new Array(1, 2, "글씨", 3.14)
+
+        console.log("arr3[0]: ", arr3[0])
+        // arr3 = [11,22]
+        arr3[0] = 10
+        console.log("arr3[0]: ", arr3[0])
+
+        // console.log('arr3 : , ', arr3)
+        console.log(arr3)
+        console.log('arr3 : + '+ arr3)
+
+        arr3[10] = 100
+        console.log('arr3[10] : ', arr3[10])
+        console.log('arr3 : '+ arr3)
+        console.log('arr3 : ', arr3)
+
+        console.log('---------------')
+        arr3["age"] = 20
+        arr3[11] = 110
+        arr3[0] = 11
+        arr3[3.14] = 11
+        console.log('arr3["age"] : ', arr3['age'])
+        console.log('arr3 : '+ arr3)
+        console.log('arr3 : ', arr3)
+
+        console.log('arr4.length :', arr4.length)
+
+        console.log('arr3[200]', arr3[200])
+
+        for(let i=0; i<arr4.length; i++){
+            console.log(arr4[i])
+        }
+
+
+        const 중식 = ['탕슉', '짬뽕', '깐쇼새우', '볶음밥']
+        const 양식 = ['파스타', '돈까스', '스테이크']
+        const 일식 = ['초밥', '카라아케', '오꼬노미야끼', '라멘', '타코야끼']
+        const 음식 = [중식, 양식, 일식]
+
+        for(let i=0; i<음식.length; i++){
+            for(let j=0; j<음식[i].length; j++){
+                console.log(음식[i][j])
+            }
+        }
+
+        // 배열의 메소드 사용하기
+        let arr = [1,2,3,4]
+
+        // 맨 마지막에 하나 추가
+        arr.push(5)
+        console.log(arr)
+        
+        // 맨 처음에 추가
+        arr.unshift(0)
+        console.log(arr)
+
+        // 맨 처음 것 하나 빼서 돌려주기
+        // 원본 바뀜
+        let shift = arr.shift()
+        console.log('shift', shift)
+        console.log(arr)
+
+        // 맨 마지막 것 한 빼서 돌려주기
+        let pop = arr.pop()
+        console.log('pop', pop)
+        console.log(arr)
+
+        // stack과 queue
+        // stack
+        //      나중의 것을 처음에 사용하는 것
+        //      후입선출 Last In First Out(LIFO)
+        // queue
+        //      처음 것을 처음에 사용하는 것
+        //      선입선출 First In First Out(FIFO)
+
+        // 배열 뒤집기
+        const reverse = arr.reverse()
+        console.log(arr)
+        console.log('reverse', reverse)
+
+        arr = [7,4,2,3,6,5]
+        // 배열 오름차순 정렬
+        const sort = arr.sort()
+        console.log(arr)
+        console.log('sort: ', sort)
+
+        // 함수를 이용해서 내림차순 만들기
+        // 이건 함수 배우고
+        // 심지어 화살표까지
+
+        sort.reverse()
+
+        // chaining 체이닝 체인방식 체인
+        arr.sort().reverse()
+
+        
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
