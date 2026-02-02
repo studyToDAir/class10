@@ -107,8 +107,107 @@
         // chaining 체이닝 체인방식 체인
         arr.sort().reverse()
 
-        
+        // splice( 시작index, count )
+        /*
+            원본에서 잘라서 돌려준다(원본 바꿈)
+            시작index가 음수면 뒤에서부터 따진다
+            전달인자가 시작index하나면 끝까지
+            Ctrl + x 느낌이다. 원본 사라진다
+        */
+        arr = [0,1,2,3,4,5,6]
+        let sp = arr.splice(2, 3)
+        console.log(arr)
+        console.log('sp', sp)
 
+        arr = [0,1,2,3,4,5,6]
+        // 뒤에서 4번째부터 오른쪽으로 2개
+        sp = arr.splice(-4, 2)
+        console.log(arr)
+        console.log('sp', sp)
+
+        arr = [0,1,2,3,4,5,6]
+        sp = arr.splice(3)
+        console.log(arr)
+        console.log('sp', sp)
+
+        // count가 커도 에러 없이 끝까지만 
+        arr = [0,1,2,3,4,5,6]
+        sp = arr.splice(3, 100)
+        console.log(arr)
+        console.log('sp', sp)
+
+        arr = [0,1,2,3,4,5,6]
+        // 자를건 자르고 그 자리에 새 값을 추가
+        arr.splice(1, 2, 10,20,30,40)
+        console.log(arr)
+
+        arr = [0,1,2,3,4,5,6]
+        const arr5 = [10,20,30]
+        console.log(arr5)
+        console.log(...arr5) // spread 연산자
+                             // 배열을 펼쳐준다
+        console.log(10,20,30)
+        arr.splice(1, 0, ...arr5)
+        console.log(arr)
+
+        arr = [0,1,2,3,4,5,6]
+        // 중간에 삽입
+        arr.splice(1, 0, 100)
+        console.log(arr)
+
+        // slice
+        /*
+            원본을 유지
+            시작index부터 끝index 바로 앞까지
+            복사해서 돌려주기
+            Ctrl + c 느낌
+        */
+        arr = [0,1,2,3,4,5,6]
+        let s = arr.slice(2, 5)
+        console.log(arr)
+        console.log('s', s)
+        // 끝index가 넘어가도 오류 없이 끝까지만 복사
+        s = arr.slice(2, 50)
+        console.log(arr)
+        console.log('s', s)
+
+        // 전달인자 하나면 거기부터 끝까지
+        s = arr.slice(2)
+        console.log(arr)
+        console.log('s', s)
+
+        // 시간에서 시 표시할 때
+        // 12시는 12
+        // 7시는 07
+        // 012, 07 이렇게 0 붙이고 뒤에서 두자리 자르기
+        let hour = 7
+        let str_hour = '0'+ hour
+        let h = str_hour.slice(-2)
+        console.log('h', h)
+
+        // join
+        // 원본 안바뀜
+        // 배열을 모두 글씨로 바꿔준다
+        // 전달인자가 없는 경우 , 적어준다
+        arr = [0,1,2,3,4,5,6]
+        let str = arr.join()
+        console.log('str', str)
+        str = arr.join('😪😍')
+        console.log('str', str)
+
+        // 문자열 함수 split
+        // 구분자로 잘라서 배열로 만들어 준다
+        // 단, 구분자는 사라진다
+        let arr6 = str.split('😪😍')
+        console.log(arr6)
+
+        // concat 배열 합치기
+        let arr7 = [ 1,2,3,4 ]
+        let arr8 = arr6.concat(arr7)
+        console.log(arr8)
+
+        console.log(arr8.toString())
+        console.log(''+arr8)
     </script>
 </head>
 <body>
