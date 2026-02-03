@@ -19,6 +19,7 @@
         const z = plus(2, 3)
         console.log('z :', z)
 
+        // const z2 = plus(2, z)
         const z2 = plus(2, plus(2, 3))
         console.log('z2 :', z2)
 
@@ -36,7 +37,7 @@
         // 받을 만큼만 가져간다
         console.log('------------')
         a = plus(10,20,30,40)
-        console.log('a :', a) 
+        console.log('a :', a)
 
         function plus2(x, y){
             // if(x == undefined){
@@ -47,7 +48,7 @@
             // }
 
             if(!x){
-                console.log('참', x)
+                console.log('x가 거짓:', x)
                 x = 0
             }
             // if(!y){
@@ -62,11 +63,23 @@
         // 전달인자가 없을 때의 기본 값
         // 만약에 있으면 그 값 사용
         function plus3(x = 0, y = 0){
+    // function plus3(x = undefined, y = undefined){
             console.log('x', x)
             console.log('y', y)
             return x + y;
         }
         console.log(  plus3(2)  )
+
+
+        // 오버로딩
+        // 지원하지 않음
+        function over(){
+
+        }
+        function over(x){
+
+        }
+
 
         let c = [1,2,3]
         function fn_arr(b){
@@ -90,6 +103,10 @@
         log(1, 2, 3)            // 이거랑 같음
 
         //System.out.printf("%d, %d", 1, 2)
+
+        console.log('!!!!!!!!!!!!!')
+        print()
+        console.log('!!!!!!!!!!!!!')
 
         function print(){
             console.log("print 실행")
@@ -115,23 +132,25 @@
         print()
         print()
 
+        console.log('@@@@@@@@@@@')
+            console.log(print)
+            // print = 3
+            console.log(print)
+            console.log(typeof print)
+            // print()
+            // console.log = 3
+        console.log('@@@@@@@@@@@')
+
         let p = print;
         console.log('typeof print:', typeof print)
         console.log('typeof p:', typeof p)
         p()
+        console.log(p)
 
         let l = console.log
         l(1,2,3)
 
-        // 오버로딩
-        // 지원하지 않음
-        function over(){
-
-        }
-        function over(x){
-
-        }
-
+        
         // 익명 함수
         let no_name = function (){
             console.log('익명함수')
@@ -151,18 +170,95 @@
         }
         test(no_name)
 
+        // callback 함수
         test(function (){
             console.log('익명함수2')
         })
 
+        // // test(3)
+        // let aa = 3
+        // test(aa)
 
-        // setTimeout(함수, 시간ms)
-        setTimeout( no_name, 2000 )
+        function test2(cb){
+            console.log(typeof cb) // "function"
+            if(typeof cb == "function"){
+                cb()
+            } else {
+                console.log('함수가 아닙니다')
+            }
+        }
+        test2(function(){  })
+        test2(3)
+
+
+        // setTimeout(함수, 시간ms == 1/1000초)
+        // 지연 시간 뒤에 콜백함수를 실행 줌
+        setTimeout( no_name, 1000 * 2 )
+        setTimeout( 
+            no_name, 
+            1000 * 2 
+        )
         
-        setTimeout( function (){
-            console.log('익명함수3')
-        }, 3000 )
+        setTimeout( 
+            function (){
+                console.log('익명함수3')
+            }, 
+            3000 
+        )
 
+        let idx = setTimeout( 
+            function (){
+                console.log('익명함수4')
+            }, 
+            1000 * 10 
+        )
+        console.log('idx : ', idx)
+        clearTimeout(idx) // setTimeout을 취소
+
+        // setTimeout에서
+        // callback함수에 전달인자 주는 방법
+        let yy = 10
+        setTimeout(
+            function(x, y){
+                console.log(x, y)
+            },
+            1000, 'a', yy
+        )
+
+        // setInterval
+        // setInterval(콜백함수, 지연시간)
+        // 지연시간 이후 실행을 반복해준다
+        let idx2 = setInterval(
+            function(){
+                console.log('setInterval 실행')
+            }, 
+            1000*2)
+
+        setTimeout(function(){
+            clearInterval(idx2) // setInterval 취소
+        }, 1000*5)
+
+        function fn(){
+            console.log('fn 실행')
+            return 1
+        }
+        let fn2 = fn;
+        let fn3 = fn();
+
+        function fn4(){
+            console.log('fn 실행')
+            return function(){
+                console.log('return으로 함수 줌')
+            }
+        }
+
+        console.log(  console.log('setInterval 실행')   )
+
+
+        // eval()
+        let str = "console.log('eval', 123)"
+        eval(str)
+        
 
 </script>
 </head>
