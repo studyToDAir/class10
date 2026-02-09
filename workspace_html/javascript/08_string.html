@@ -55,7 +55,74 @@
         str2 = str3.trim()
         console.log(`[${str2}]`)
         
-        
+        // 문제1
+        // 어떤 이메일이라도 id를 출력해보자
+        // study.todair@gmail.com
+        const q1 = 'study.todair@gmail.com'
+        // let a1 = q1.split('@')
+        // let id = a1[0]
+        let id = q1.split('@')[0]
+        console.log('q1 : id#1 :', id)
+
+        // 처음부터 @바로 앞까지 추출
+        // let idx1 = q1.indexOf('@')
+        // id = q1.substring(0, idx1)
+        id = q1.substring(0, q1.indexOf('@'))
+        console.log('q1 : id#2 :', id)
+
+        // 문제2
+        // 보안상 이메일의 앞 두자리를 제외하고 * 처리
+        // todair@naver.com >> to****@naver.com
+        // study.todair@gmail.com >> st**********@gmail.com
+        let q2 = 'study.todair@gmail.com'
+        let show = q2.substr(0, 2)
+        let company = q2.substring( q2.indexOf('@') )
+        console.log(show, company)
+
+        // padStart, padEnd도 있지만(심지어 안배웠지만)
+        // id 길이 - 2 만큼 *를 쌓아간다
+        let masking = ""
+        for(let i=0; i<q2.split('@')[0].length - 2; i++){
+            masking += "*"
+        }
+        let a2 = show + masking + company
+        console.log('a2 :', a2)
+
+
+        // 문제3
+        // 인터넷 주소 중에서 2차 도메인 출력
+        // comic.naver.com >> naver
+        // job.human.or.kr >> or
+        let q3 = 'job.human.or.kr'
+        let arr = q3.split('.')
+        console.log(arr)
+        console.log(arr[arr.length-2])
+
+
+        // 문제4
+        // 네이버 검색 url의 query string에서 검색어를 출력한다
+        // HINT : query=옆에있는 단어 
+        // https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=1234&ackey=po4zpvmy
+        // >> 1234
+        let q4 = 'https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=1234&ackey=po4zpvmy'
+        let a4_1 = q4.split('query=')[1] // 1234&ackey=po4zpvmy
+        let a4 = a4_1.split('&')[0]
+        // q4.split('query=')[1].split('&')[0]
+
+        // 문제5
+        // "2026-02-05 09:04:38"
+        // 월, 분을 출력하시오
+
+        // new Date('2026-02-05 09:14:38').getMinutes()
+        let q5 = "2026-02-05 09:04:38"
+        // q5.split('-')[1]
+        // q5.split(':')[1]
+
+        // 문제6
+        // "   a sd d ew  "
+        // 공백의 개수는?
+        let q6 = "   a b c  "
+        q6.length - q6.trim().length
 
     </script>
 </head>
