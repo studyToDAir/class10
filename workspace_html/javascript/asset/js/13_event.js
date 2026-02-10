@@ -148,6 +148,11 @@ function bind() {
         //     }, delay)
         // }
     })
+
+    window.addEventListener('scroll', function(){
+        console.log('window.scrollY :', window.scrollY)
+    })
+
 }
 
 function btn4click() {
