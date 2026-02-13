@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(249,250,251);
+        }
+
+        .wrap {
+            border: 1px solid red;
+            /* width: 95vw;
+            height: 95vh; */
+            width: 700px;
+            height: 500px;
+            
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .row {
+            height: 30%;
+            margin: 10px;
+        }
+        .card {
+            border: 1px solid rgba(4, 32, 69, 0.1);
+            border-radius: 8px;
+
+            height: 100%;
+            background-color: white;
+            padding: 10px;
+        }
+        .w-30p {
+            width: 33.3%;
+        }
+        .title {
+            font-size: 1.5em;
+            text-align: center;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+        .article {
+            display: flex;
+            font-size: 1.2em;
+            height: 30%;
+
+            border: 1px solid rgba(4, 32, 69, 0.3);
+            border-radius: 8px;
+        }
+        .grow1 {
+            flex-grow: 1;
+        }
+        .subtitle {
+            text-align: center;
+        }
+        .item {
+            height: calc(100%-20px);
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+        .btn {
+            border-radius: 10px;
+            border: 2px solid #000;
+            background-color: #fff;
+            color: black;
+        }
+        .btn.active {
+            border: 2px solid #cc0000;
+            background-color: #ff4444;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="row">
+            <div class="card w-30p">
+                <div class="title">진동</div>
+                <div class="article">
+                    <span class="item subtitle grow1">전원</span>
+                    <div class="item grow1 btn active">OFF</div>
+                    <div class="item grow1 btn">ON</div>
+                </div>
+                <div>
+                    <button type="button">-</button>
+                    <input type="text" class="val">
+                    <button type="button">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
