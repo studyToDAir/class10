@@ -30,7 +30,7 @@ public class ThrowsExam {
 			}
 		}
 		
-		
+		System.out.println("-- test3 실행 --------");
 		try {
 			test3(8);
 		} catch (LoveException e) {
@@ -63,5 +63,10 @@ public class ThrowsExam {
 		} else if(vol > 7) {
 			throw new LoveException("덜화남");
 		}
+	}
+	
+	
+	void test4() {
+		int a = Integer.parseInt("asdf");
 	}
 }

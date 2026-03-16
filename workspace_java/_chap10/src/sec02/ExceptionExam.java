@@ -37,6 +37,11 @@ public class ExceptionExam {
 		try {
 			// 신나게 코딩
 			// 코딩
+			
+			LoveException le = new LoveException();
+			le.equals(1);
+			
+			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
