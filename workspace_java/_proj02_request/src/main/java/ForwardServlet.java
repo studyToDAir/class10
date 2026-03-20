@@ -1,0 +1,42 @@
+
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/forward")
+public class ForwardServlet extends HttpServlet {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("/forward의 doGet 실행");
+		
+		String text = request.getParameter("text");
+		System.out.println("text: "+ text);
+
+		// 어차피 이동한 곳에서 응답하느라 
+		// 지금 넣어봐야 소용 없다
+		response.getWriter().println("/forward의 응답 [GET]");
+		
+		request.setAttribute("item", "롱소드");
+		
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("another");
+//		dispatcher.forward(request, response);
+		request.getRequestDispatcher("/another").forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("/forward의 doPost 실행");
+
+		String text = request.getParameter("text");
+		System.out.println("text: "+ text);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("another");
+		dispatcher.forward(request, response);
+	}
+
+}

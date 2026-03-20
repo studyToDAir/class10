@@ -1,0 +1,38 @@
+
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class AnotherServlet
+ */
+@WebServlet("/another")
+public class AnotherServlet extends HttpServlet {
+       
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("/another의 doGet 실행");
+		response.setContentType("text/html; charset=utf-8;");
+		
+		String text = request.getParameter("text");
+		System.out.println("text: "+ text);
+		
+		String item = (String)request.getAttribute("item");
+		System.out.println("item: "+ item);
+		
+		response.getWriter().println("/another의 응답 [GET]");
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("/another의 doPost 실행");
+		response.setContentType("text/html; charset=utf-8;");
+		
+		String text = request.getParameter("text");
+		System.out.println("text: "+ text);
+		
+		response.getWriter().println("/another의 응답 [POST]");
+	}
+
+}
