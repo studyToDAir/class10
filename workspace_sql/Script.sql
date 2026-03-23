@@ -1308,3 +1308,33 @@ create table emp (
 
 alter table emp
 add foreign key (deptno)  references dept(deptno)
+
+--
+CREATE TABLE todo (
+	todo_id NUMBER PRIMARY KEY,
+	duedate DATE,
+	done NUMBER DEFAULT 0,
+	content varchar2(4000),
+	ctime DATE
+);
+
+CREATE SEQUENCE seq_todo;
+
+INSERT INTO todo (todo_id, duedate, done, content, ctime)
+VALUES (seq_todo.nextval, NULL, 0, '쇼핑', sysdate);
+
+SELECT * FROM todo;
+
+COMMIT;
+
+
+SELECT * FROM todo
+WHERE todo_id = 21;
+
+
+
+
+
+
+
+

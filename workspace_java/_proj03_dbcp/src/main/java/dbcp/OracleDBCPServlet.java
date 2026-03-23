@@ -51,13 +51,12 @@ public class OracleDBCPServlet extends HttpServlet {
 				String ename = rs.getString("ename");
 				// java.sql.Date
 				Date hiredate = rs.getDate("hiredate");
-				
 				System.out.print("empno: "+ empno);
 				System.out.println(", ename: "+ ename);
 				out.println("<div>");
 				out.println("	<strong>empno</strong>:"+empno);
 				out.println(", 	<strong>ename</strong>:"+ename);
-				out.println(", 	<strong>hiredate</strong>:"+hiredate.toLocalDate());
+				out.println(", 	<strong>hiredate</strong>:"+hiredate);
 				out.println("</div>");
 			}
 			

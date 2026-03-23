@@ -164,7 +164,7 @@
 
       <Context docBase="_proj01_hello" path="/_proj01_hello" reloadable="true" source="org.eclipse.jst.jee.server:_proj01_hello"/>
       <Context docBase="_proj02_request" path="/_proj02_request" reloadable="true" source="org.eclipse.jst.jee.server:_proj02_request"/>
-      <Context docBase="_proj03_dbcp" path="/_proj03_dbcp" reloadable="true" source="org.eclipse.jst.jee.server:_proj03_dbcp"/></Host>
+      <Context docBase="_proj03_dbcp" path="/_proj03_dbcp" reloadable="true" source="org.eclipse.jst.jee.server:_proj03_dbcp"/><Context docBase="_proj03_1_todo" path="/_proj03_1_todo" reloadable="true" source="org.eclipse.jst.jee.server:_proj03_1_todo"/></Host>
     </Engine>
   </Service>
 </Server>
