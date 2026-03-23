@@ -1,6 +1,7 @@
 package todo.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +18,8 @@ public class TodoDetailController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("/todo/detail doGet 실행");
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8;");
 		
 		try {
 			// "todo_id" 받아서 출력하기
@@ -27,14 +30,33 @@ public class TodoDetailController extends HttpServlet {
 			
 			// nTodo_id를 service --> DAO 까지 보낼꺼임
 			TodoService todoService = new TodoService();
-			TodoDTO todoDTO = todoService.getTodo();
+			TodoDTO todoDTO = todoService.getTodo(nTodo_id);
+			
+			System.out.println(todoDTO);
 			
 			
+			PrintWriter out = response.getWriter();
+			// "목록으로" a tag
+//			out.write("<a href='http://localhost:8080/_proj03_1_todo/todo'>목록으로</a>");
+			out.write("<a href='../todo'>목록으로</a>");
+			out.write("<br>todo_id:"+ todoDTO.getTodo_id());
+			out.write("<br>duedate:"+ todoDTO.getDuedate());
+			out.write("<br>done:"+ todoDTO.getDone());
+			out.write("<br>content:"+ todoDTO.getContent());
+			out.write("<br>ctime:"+ todoDTO.getCtime());
+			out.write("<hr>");
+			out.write("<a href='/_proj03_1_todo/todo/modify'>수정페이지로 이동</a><br>");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		
 	}
 
 }
+
+
+
+
+
+
+

@@ -56,7 +56,7 @@ public class TodoController extends HttpServlet {
 			out.println("	<td>"+todoDTO.getTodo_id()+"</td>");
 //			out.println("	<td>"+todoDTO.getDuedate()+"</td>");
 //			out.println("	<td>"+todoDTO.getDone()+"</td>");
-			out.println("	<td>"+todoDTO.getContent()+"</td>");
+			out.println("	<td> <a href='todo/detail?todo_id="+ todoDTO.getTodo_id() +"'>"+todoDTO.getContent()+"</a></td>");
 			out.println("	<td>"+todoDTO.getCtime()+"</td>");
 			out.println("</tr>");
 		}
