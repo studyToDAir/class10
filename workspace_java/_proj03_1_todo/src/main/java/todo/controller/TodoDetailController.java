@@ -45,7 +45,7 @@ public class TodoDetailController extends HttpServlet {
 			out.write("<br>content:"+ todoDTO.getContent());
 			out.write("<br>ctime:"+ todoDTO.getCtime());
 			out.write("<hr>");
-			out.write("<a href='/_proj03_1_todo/todo/modify'>수정페이지로 이동</a><br>");
+			out.write("<a href='/_proj03_1_todo/todo/modify?todo_id="+ todo_id +"'>수정페이지로 이동</a><br>");
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

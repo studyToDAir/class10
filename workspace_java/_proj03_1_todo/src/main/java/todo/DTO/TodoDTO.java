@@ -12,6 +12,10 @@ public class TodoDTO {
 	private String content;
 	private Date ctime;
 	
+	public TodoDTO(){
+		this.todo_id = -1;
+	}
+	
 	public int getTodo_id() {
 		return this.todo_id;
 	}

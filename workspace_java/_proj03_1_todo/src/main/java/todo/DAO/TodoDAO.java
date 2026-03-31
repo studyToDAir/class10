@@ -179,7 +179,212 @@ public class TodoDAO {
 		return todoDTO;
 	}
 	
+	public int insertTodo(TodoDTO todoDTO) {
+		int result = -1;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			// DB 접속(그런데 이제 커넥션 풀로)
+			Context ctx = new InitialContext();
+			DataSource dataFactory = (DataSource)ctx.lookup("java:/comp/env/jdbc/oracle");
+			conn = dataFactory.getConnection();
+			
+			// SQL 준비
+			String query =  " INSERT INTO todo (todo_id, duedate, done, content, ctime)";
+				   query += " VALUES (seq_todo.nextval, NULL, 0, ?, sysdate)";
+			ps = conn.prepareStatement(query);
+			ps.setString(1, todoDTO.getContent());
+			
+			// SQL 실행 및 결과 확보
+			result = ps.executeUpdate();
+			System.out.println("insert 결과:"+ result);
+			
+			// 결과 활용
+
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+	}
 	
 	
+	public int updateTodo(TodoDTO todoDTO) {
+		int result = -1;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			// DB 접속(그런데 이제 커넥션 풀로)
+			Context ctx = new InitialContext();
+			DataSource dataFactory = (DataSource)ctx.lookup("java:/comp/env/jdbc/oracle");
+			conn = dataFactory.getConnection();
+			
+			// SQL 준비
+			String query =  " update todo";
+					query += " set duedate = ?,";
+					query += "     done = ?,";
+					query += "     content = ?";
+					query += " where todo_id = ?";
+			ps = conn.prepareStatement(query);
+			ps.setDate(1, todoDTO.getDuedate());
+			ps.setInt(2, todoDTO.getDone());
+			ps.setString(3, todoDTO.getContent());
+			ps.setInt(4, todoDTO.getTodo_id());
+			
+			// SQL 실행 및 결과 확보
+			result = ps.executeUpdate();
+			System.out.println("update 결과:"+ result);
+			
+			// 결과 활용
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return result;
+	}
+	
+	
+	public List<TodoDTO> select(TodoDTO todoDTO) {
+
+		List<TodoDTO> list = new ArrayList();
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			// JNDI 방식
+			// context.xml에 있는 DB 정보로 커넥션 풀을 가져온다
+			Context ctx = new InitialContext();
+			// DataSource : 커넥션 풀 관리자
+			DataSource dataFactory = (DataSource)ctx.lookup("java:/comp/env/jdbc/oracle");
+			
+			// DB 접속(그런데 이제 커넥션 풀로)
+			conn = dataFactory.getConnection();
+			
+			// SQL 준비
+			String query = " select * from todo";
+			if(todoDTO.getTodo_id() != -1) {
+				// where 검색
+				query += " where todo_id = ?";
+			}
+			
+			ps = conn.prepareStatement(query);
+			
+			if(todoDTO.getTodo_id() != -1) {
+				ps.setInt(1, todoDTO.getTodo_id());
+			}
+			
+			// SQL 실행 및 결과 확보
+			rs = ps.executeQuery();
+			
+			// 결과 활용
+			while( rs.next() ) {
+				
+				int todo_id = rs.getInt("todo_id");
+				Date duedate = rs.getDate("duedate");
+				int done = rs.getInt("done");
+				String content = rs.getString("content");
+				Date ctime = rs.getDate("ctime");
+				
+				System.out.println("content: "+ content);
+
+				TodoDTO dto = new TodoDTO();
+				dto.setTodo_id(todo_id);
+				dto.setDuedate(duedate);
+				dto.setDone(done);
+				dto.setContent(content);
+				dto.setCtime(ctime);
+				
+				list.add(dto);
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			if(rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if(conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	
+		return list;
+	}
 	
 }

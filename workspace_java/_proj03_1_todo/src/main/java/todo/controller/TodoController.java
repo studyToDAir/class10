@@ -31,6 +31,7 @@ public class TodoController extends HttpServlet {
 		// html로 출력하기
 		PrintWriter out = response.getWriter();
 		
+		out.println("<a href='add.html'>글쓰기</a><br>");
 		out.println("<table border=1>");
 		out.println("<tr>");
 		out.println("	<th>todo_id</th>");
@@ -65,6 +66,9 @@ public class TodoController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("/todo doPost 실행");
+		
+		doGet(request, response);
 	}
 
 }

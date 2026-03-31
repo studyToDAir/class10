@@ -22,4 +22,28 @@ public class TodoService {
 		TodoDTO todoDTO = todoDAO.selectOne(todo_id);
 		return todoDTO;
 	}
+	
+	public int addTodo(TodoDTO todoDTO) {
+		TodoDAO todoDAO = new TodoDAO();
+		int count = todoDAO.insertTodo(todoDTO);
+		return count;
+	}
+	
+	public int update(TodoDTO dto) {
+		TodoDAO todoDAO = new TodoDAO();
+		int count = todoDAO.updateTodo(dto);
+		return count;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+

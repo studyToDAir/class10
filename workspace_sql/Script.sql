@@ -1321,7 +1321,7 @@ CREATE TABLE todo (
 CREATE SEQUENCE seq_todo;
 
 INSERT INTO todo (todo_id, duedate, done, content, ctime)
-VALUES (seq_todo.nextval, NULL, 0, '쇼핑', sysdate);
+VALUES (seq_todo.nextval, NULL, 0, '복습', sysdate);
 
 SELECT * FROM todo;
 
@@ -1329,9 +1329,10 @@ COMMIT;
 
 
 SELECT * FROM todo
-WHERE todo_id = 21;
+WHERE todo_id = 글씨;
 
-
+SELECT * FROM emp
+WHERE ename = 'SMITH' AND empno = '7369';
 
 
 
