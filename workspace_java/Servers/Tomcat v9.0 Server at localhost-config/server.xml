@@ -164,7 +164,7 @@
 
       
       
-      <Context docBase="_proj05_cookie_session" path="/_proj05_cookie_session" reloadable="true" source="org.eclipse.jst.jee.server:_proj05_cookie_session"/><Context docBase="_proj06_filter" path="/_proj06_filter" reloadable="true" source="org.eclipse.jst.jee.server:_proj06_filter"/><Context docBase="_proj07_file" path="/_proj07_file" reloadable="true" source="org.eclipse.jst.jee.server:_proj07_file"/></Host>
+      <Context docBase="_proj08_paging" path="/_proj08_paging" reloadable="true" source="org.eclipse.jst.jee.server:_proj08_paging"/></Host>
     </Engine>
   </Service>
 </Server>

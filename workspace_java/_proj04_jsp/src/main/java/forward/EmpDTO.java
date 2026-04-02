@@ -5,14 +5,30 @@ import java.sql.Date;
 public class EmpDTO {
 //  - 사번, 이름, 직급, 연봉, 상사의 사번
 
-	int empno;
-	String ename;
-	String job;
-	int sal;
-	Integer mgr;
-	Date hiredate;
-	Integer comm;
-	int deptno;
+	private int empno;
+	private String ename;
+	private String job;
+	private int sal;
+	private Integer mgr;
+	private Date hiredate;
+	private Integer comm;
+	private int deptno;
+	
+	private int size = 10;
+	private int page = 1;
+	
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
+	}
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
 	public int getEmpno() {
 		return empno;
 	}

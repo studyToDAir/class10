@@ -521,7 +521,7 @@ WHERE num > 1;
 /* 1 */ FROM emp
 /* 2 */ WHERE sal > 1000
 /* 3 */ GROUP BY job
-/* 4 */ HAVING count(*) >= 3
+/* 4 */       HAVING count(*) >= 3
 /* 6 */ ORDER BY job DESC, num;
 
 
@@ -1334,7 +1334,10 @@ WHERE todo_id = 글씨;
 SELECT * FROM emp
 WHERE ename = 'SMITH' AND empno = '7369';
 
-
+SELECT rownum, e.* FROM (
+	SELECT emp.* FROM emp
+	ORDER BY hiredate
+) e;
 
 
 

@@ -29,6 +29,7 @@ public class FileDownloadServlet extends HttpServlet {
 //		response.addHeader("Content-disposition", "attachment; fileName=a_txt");
 		response.addHeader("Content-disposition", "attachment; fileName="+ filename);
 		
+		
 		// 파일 읽기 시작
 		InputStream is = new FileInputStream(file);
 		// 메모리로 퍼 올릴 바가지 크기 설정
