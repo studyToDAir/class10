@@ -11,7 +11,7 @@ public class EmpService {
 
 	EmpDAO empDAO = new EmpDAO();
 
-	public List getListEmp(EmpDTO empDTO) {
+	public Map getListEmp(EmpDTO empDTO) {
 		
 		int size = empDTO.getSize();
 		int page = empDTO.getPage();

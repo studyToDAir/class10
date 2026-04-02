@@ -1,7 +1,7 @@
 package emp.controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -46,8 +46,14 @@ public class EmpListController extends HttpServlet {
 		empDTO.setPage(page);
 		
 		// DB 조회
-		List list = empService.getListEmp(empDTO);
-		request.setAttribute("list", list);
+//		List list = empService.getListEmp(empDTO);
+//		request.setAttribute("list", list);
+		
+		Map map = empService.getListEmp(empDTO);
+		map.put("size", size);
+		map.put("page", page);
+		request.setAttribute("map", map);
+		
 		
 		// jsp로 보내기
 		request.getRequestDispatcher("/WEB-INF/views/list.jsp").forward(request, response);

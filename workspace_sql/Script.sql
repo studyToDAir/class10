@@ -1334,11 +1334,17 @@ WHERE todo_id = 글씨;
 SELECT * FROM emp
 WHERE ename = 'SMITH' AND empno = '7369';
 
-SELECT rownum, e.* FROM (
-	SELECT emp.* FROM emp
-	ORDER BY hiredate
-) e;
+SELECT * FROM (
+	SELECT rownum as rnum, e.* FROM (
+		SELECT emp.* FROM emp
+		ORDER BY hiredate
+	) e
+)
+WHERE rnum >= 3 AND rnum <= 7;
 
 
+SELECT * FROM (	SELECT rownum as rnum, e.* FROM (		SELECT emp.* FROM emp		ORDER BY hiredate	) e)WHERE rnum >= 1 AND rnum <= 10;
 
+
+SELECT count(*) FROM emp;
 
