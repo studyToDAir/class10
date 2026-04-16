@@ -1345,6 +1345,76 @@ WHERE rnum >= 3 AND rnum <= 7;
 
 SELECT * FROM (	SELECT rownum as rnum, e.* FROM (		SELECT emp.* FROM emp		ORDER BY hiredate	) e)WHERE rnum >= 1 AND rnum <= 10;
 
+-- 무한 대댓글
+SELECT * FROM emp;
 
-SELECT count(*) FROM emp;
+SELECT *
+FROM emp
+WHERE mgr is NULL;
+
+SELECT * FROM EMP
+WHERE mgr IN (
+	SELECT empno FROM EMP
+	WHERE mgr in (SELECT empno
+					FROM emp
+					WHERE mgr is NULL)
+);
+
+
+SELECT * 
+FROM emp
+WHERE mgr is NULL
+UNION ALL 
+SELECT * FROM EMP
+WHERE mgr in (SELECT empno
+				FROM emp
+				WHERE mgr is NULL);
+
+WITH abc (empno, ename) AS (
+	SELECT empno, ename FROM emp
+)
+SELECT * FROM abc;
+
+
+WITH emp_recu (empno, mgr, ename, lv) AS (
+	SELECT
+		empno, 
+		mgr, 
+		ename,
+		0 AS lv
+	FROM emp
+	WHERE mgr is NULL -- 원글
+	UNION ALL
+	SELECT 
+		e.empno, 
+		e.mgr, 
+		lpad(' ', 4*(lv+1)) || e.ename,
+		er.lv + 1 AS lv
+--	FROM emp
+	FROM emp_recu er -- 재귀 호출
+	LEFT OUTER JOIN emp e ON (e.mgr = er.empno)
+	WHERE e.mgr IS not NULL -- 원글을 제외하고
+)
+SEARCH DEPTH FIRST BY empno DESC SET order_by_empno -- 정렬에 대한 별칭
+SELECT * FROM emp_recu
+ORDER BY order_by_empno;
+
+
+SELECT
+	empno, 
+	mgr, 
+	lpad(' ', 4*LEVEL) || ename,
+	LEVEL
+FROM emp
+START WITH mgr IS NULL -- 시작점
+--CONNECT BY PRIOR empno = mgr -- 관계 (순서에 주의)
+CONNECT BY empno != 7782 AND PRIOR empno = mgr -- 관계 (순서에 주의)
+ORDER siblings BY empno;
+
+
+
+
+
+
+
 
