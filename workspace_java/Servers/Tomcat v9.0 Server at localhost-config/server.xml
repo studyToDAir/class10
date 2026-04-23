@@ -164,7 +164,7 @@
 
       
       
-      <Context docBase="_proj08_paging" path="/_proj08_paging" reloadable="true" source="org.eclipse.jst.jee.server:_proj08_paging"/></Host>
+      <Context docBase="_spring2_IoC_DI" path="/human2" reloadable="false" source="org.eclipse.jst.jee.server:_spring2_IoC_DI"/></Host>
     </Engine>
   </Service>
 </Server>
