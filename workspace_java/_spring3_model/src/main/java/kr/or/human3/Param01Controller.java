@@ -6,10 +6,14 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,6 +45,7 @@ public class Param01Controller {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("join");
 		
+
 		return mav;
 	}
 	@RequestMapping("/join3.do")
@@ -227,4 +232,79 @@ public class Param01Controller {
 		return mav;
 	}
 	
+	@RequestMapping("/cal/1")
+	public void cal() {
+		System.out.println("1월 달력임미다");
+	}
+
+	@RequestMapping("/cal/{month}")
+	public void cal2(
+			@PathVariable("month") // 생략 불가능
+			int mon
+	) {
+		System.out.println(mon +"월 달력입니다");
+	}
+
+	@RequestMapping("/lunch/{store}/order/{menu}/start")
+	public void lunch(
+		@PathVariable("store")
+		String store,
+		
+		@PathVariable	// 변수명이 같으면 () 생략 가능
+		String menu
+	) {
+		System.out.println(store +"에서 "+ menu +"을(를) 준비합니다");
+	}
+	
+	@RequestMapping("/dinner")
+	public String dinner(Model model, String menu) {
+		System.out.println("/dinner 실행 menu:"+ menu);
+		
+		model.addAttribute("menu", menu);
+		
+		return "result";
+	}
+	
+	@RequestMapping(value="/brunch")
+	public String brunch() {
+		System.out.println("/brunch");
+		return "result";
+	}
+	
+	@RequestMapping(value={"/brunch1", "/brunch2"})
+	public String brunch2() {
+		System.out.println("/brunch1 또는 /brunch2");
+		return "result";
+	}
+
+	@RequestMapping(value="/brunch3", method=RequestMethod.POST)
+	public String brunch3() {
+		System.out.println("/brunch3");
+		return "result";
+	}
+
+	@RequestMapping(value="/brunch4", method={RequestMethod.POST, RequestMethod.GET})
+	public String brunch4(HttpServletRequest req) {
+		System.out.println("/brunch4");
+		
+		HttpSession session = req.getSession();
+		
+		return "result";
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
