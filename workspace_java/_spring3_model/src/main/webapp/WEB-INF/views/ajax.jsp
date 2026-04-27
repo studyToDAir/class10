@@ -129,7 +129,8 @@ document.querySelector("#btn6").addEventListener("click", async function(){
 // 	const url = 'ajax5'
 	const url = 'ajax6'
 	const response = await fetch(url, {
-		method: 'post',
+// 		method: 'post',
+		method: 'put',
 		headers:{
 			'Content-Type': 'application/json'
 		},

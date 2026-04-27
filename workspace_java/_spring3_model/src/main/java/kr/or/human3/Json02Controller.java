@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+//@ResponseBody // 모든 메소드에 붙이는 효과
+				// ajax 전용 컨트롤러인 경우 편하다
 public class Json02Controller {
 
 	@RequestMapping("ajax.do")
