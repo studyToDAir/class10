@@ -1412,9 +1412,10 @@ CONNECT BY empno != 7782 AND PRIOR empno = mgr -- 관계 (순서에 주의)
 ORDER siblings BY empno;
 
 
+SELECT * FROM emp2;
 
-
-
+CREATE TABLE emp2
+AS SELECT * FROM emp;
 
 
 
