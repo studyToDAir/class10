@@ -1417,5 +1417,28 @@ SELECT * FROM emp2;
 CREATE TABLE emp2
 AS SELECT * FROM emp;
 
+select * from emp2
+where empno = 7369;
+
+
+select * from emp2
+where ename = '';
+
+select *
+ from emp2
+where lower(ename) like lower('%' || '' or 1=1 or ename='SCOTT' || '%')
+
+
+CREATE SEQUENCE seq_emp2
+START WITH 1001;
+
+SELECT seq_emp2.nextval FROM dual;
+
+
+
+
+
+
+
 
 

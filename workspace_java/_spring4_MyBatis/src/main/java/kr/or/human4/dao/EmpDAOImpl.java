@@ -44,4 +44,64 @@ public class EmpDAOImpl implements EmpDAO {
 		return map;
 	}
 
+	@Override
+	public EmpDTO selectEmpno(int empno) {
+		EmpDTO empDTO = null;
+		
+		empDTO = sqlSession.selectOne("mapper.emp.selectEmpno", empno);
+		System.out.println("selectEmpno: empDTO: "+ empDTO);
+		
+		return empDTO;
+	}
+
+	@Override
+	public List selectEname(String ename) {
+		List<EmpDTO> list = null;
+		
+		list = sqlSession.selectList("mapper.emp.selectEname", ename);
+		System.out.println("selectEmpno: empDTO: "+ list);
+		
+		return list;
+	}
+	
+	@Override
+	public List selectJob(String job) {
+		List<EmpDTO> list = null;
+		
+		list = sqlSession.selectList("mapper.emp.selectJob", job);
+		System.out.println("selectJob: empDTO: "+ list);
+		
+		return list;
+	}
+
+	@Override
+	public List selectJobEname(EmpDTO dto) {
+		List<EmpDTO> list = null;
+		
+		list = sqlSession.selectList("mapper.emp.selectJobEname", dto);
+		System.out.println("selectJobEname: empDTO: "+ list);
+		
+		return list;
+	}
+	@Override
+	public int insertEmp2(EmpDTO dto) {
+		int result = -1;
+		result = sqlSession.insert("mapper.emp.insertEmp2", dto);
+		System.out.println("insertEmp2: result: "+ result);
+		
+		return result;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+

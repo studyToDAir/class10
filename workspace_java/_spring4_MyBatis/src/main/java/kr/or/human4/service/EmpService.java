@@ -10,4 +10,12 @@ public interface EmpService {
 	List<EmpDTO> getEmpList();
 	EmpDTO getEmp();
 	Map getEmpMap();
+	
+	EmpDTO getEmpno(int empno);
+	List getEname(String ename);
+	List getJob(String job);
+	List getJobEname(EmpDTO dto);
+
+	int joinEmp2(EmpDTO dto);
+	
 }
