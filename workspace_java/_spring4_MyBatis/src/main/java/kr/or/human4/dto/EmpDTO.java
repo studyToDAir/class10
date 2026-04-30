@@ -1,6 +1,7 @@
 package kr.or.human4.dto;
 
 import java.sql.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -10,7 +11,7 @@ public class EmpDTO {
 	private int empno;
 	private String ename;
 	private String job;
-	private int sal;
+	private int sal = Integer.MIN_VALUE;
 	private Integer mgr;
 	private Date hiredate;
 	private Integer comm;
@@ -21,4 +22,8 @@ public class EmpDTO {
 	private int start = 0;
 	private int end;
 	
+	private String type;
+	private String keyword;
+	
+	private List empnos;
 }

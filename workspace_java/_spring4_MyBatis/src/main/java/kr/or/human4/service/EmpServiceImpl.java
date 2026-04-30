@@ -59,4 +59,30 @@ public class EmpServiceImpl implements EmpService {
 		return empDAO.insertEmp2(dto);
 	}
 
+	@Override
+	public int modifyEmp2(EmpDTO dto) {
+		return empDAO.updateEmp2(dto);
+	}
+
+	@Override
+	public int removeEmp2(int empno) {
+		return empDAO.deleteEmp2(empno);
+	}
+
+	@Override
+	public EmpDTO loginCheck(EmpDTO dto) {
+		EmpDTO empDTO = empDAO.login(dto);
+		return empDTO;
+	}
+
+	@Override
+	public List<EmpDTO> search(EmpDTO dto) {
+		List<EmpDTO> result = empDAO.search(dto);
+		return result;
+	}
+	@Override
+	public List<EmpDTO> choice(EmpDTO dto) {
+		List<EmpDTO> result = empDAO.choice(dto);
+		return result;
+	}
 }

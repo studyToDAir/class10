@@ -17,4 +17,10 @@ public interface EmpDAO {
 	List selectJobEname(EmpDTO dto);
 
 	int insertEmp2(EmpDTO dto);
+	int updateEmp2(EmpDTO dto);
+	int deleteEmp2(int empno);
+	EmpDTO login(EmpDTO dto);
+	
+	List search(EmpDTO dto);
+	List choice(EmpDTO dto);
 }

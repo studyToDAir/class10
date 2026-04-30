@@ -71,5 +71,70 @@
 			#{deptno}
 		)
 	</insert>
+	
+	<update id="updateEmp2" parameterType="empDTO">
+		update emp2
+		set 
+			ename = #{ename},
+			job = #{job},
+			sal = #{sal},
+			mgr = #{mgr},
+			hiredate = #{hiredate},
+			comm = #{comm},
+			deptno = #{deptno}
+		where
+			empno = #{empno}
+	</update>
+	
+	<delete id="deleteEmp2" parameterType="empDTO">
+		delete emp2
+		where
+			empno = #{empno}
+	</delete>
+	
+	<select id="login" resultType="empDTO" parameterType="empDTO">
+		select * from emp2
+		where 
+			ename = #{ename}
+			and empno = #{empno}
+	</select>
+	
+	<select id="getSeqDept2" resultType="int">
+		SELECT seq_dept2.nextval FROM dual
+	</select>
+	
+	<insert id="insertDept2" parameterType="deptDTO">
+		<selectKey resultType="int" keyProperty="deptno" order="BEFORE">
+			SELECT seq_dept2.nextval FROM dual
+		</selectKey>
+	
+		insert into dept2(
+			deptno,
+			dname,
+			loc
+		) values (
+			#{deptno},
+			#{dname},
+			#{loc}
+		)
+	</insert>
+	
+	<insert 
+		id="insert2Dept2"
+		parameterType="deptDTO"
+		useGeneratedKeys="true"
+		keyProperty="deptno">
+
+		insert into dept2(
+			deptno,
+			dname,
+			loc
+		) values (
+			seq_dept2.nextval,
+			#{dname},
+			#{loc}
+		)
+	</insert>
+	
 </mapper>
 

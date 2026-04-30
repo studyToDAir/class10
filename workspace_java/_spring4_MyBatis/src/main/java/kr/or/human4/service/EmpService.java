@@ -17,5 +17,11 @@ public interface EmpService {
 	List getJobEname(EmpDTO dto);
 
 	int joinEmp2(EmpDTO dto);
+	int modifyEmp2(EmpDTO dto);
+	int removeEmp2(int empno);
+
+	EmpDTO loginCheck(EmpDTO dto);
 	
+	List<EmpDTO> search(EmpDTO dto);
+	List<EmpDTO> choice(EmpDTO dto);
 }
