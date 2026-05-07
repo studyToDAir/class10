@@ -24,4 +24,6 @@ public interface EmpService {
 	
 	List<EmpDTO> search(EmpDTO dto);
 	List<EmpDTO> choice(EmpDTO dto);
+	
+	List<EmpDTO> selectMapper();
 }

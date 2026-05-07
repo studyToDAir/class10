@@ -1435,10 +1435,28 @@ START WITH 1001;
 SELECT seq_emp2.nextval FROM dual;
 
 
+SELECT * FROM dept2;
+
+CREATE TABLE dept2
+AS SELECT * FROM dept;
+
+-- 50번 부터 시작해서
+-- 10씩 증가 하게
+CREATE SEQUENCE seq_dept2
+START WITH 50
+INCREMENT BY 10;
+
+SELECT seq_dept2.nextval FROM dual;
+
+DROP SEQUENCE seq_dept2;
 
 
+INSERT INTO dept2 (deptno, dname, loc)
+values(seq_dept2.nextval, 'd', 'l')
+-- values(50, 'd', 'l')
 
+INSERT INTO emp2 
+values(seq_dept2.currval ,,,,,,);
 
-
-
-
+SELECT * FROM emp2
+WHERE sal > '2000';

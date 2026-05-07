@@ -275,6 +275,14 @@ public class EmpController {
 		model.addAttribute("list", list);
 		return "result";
 	}
+	
+	@RequestMapping("/mapper")
+	public String mapper(Model model) {
+		List<EmpDTO> list = empService.selectMapper();
+
+		model.addAttribute("list", list);
+		return "result";
+	}
 }
 
 

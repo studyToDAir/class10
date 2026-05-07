@@ -139,6 +139,7 @@ public class EmpDAOImpl implements EmpDAO {
 		
 		// insert에 직접 넣기
 		result += sqlSession.insert("mapper.emp.insertDept2", dto);
+		// selectKey 때문에 deptno가 채워진 상
 		result += sqlSession.insert("mapper.emp.insertEmp2", dto);
 		
 		return result;
