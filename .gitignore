@@ -2,3 +2,6 @@ bin/
 
 .metadata/
 *.war
+workspace_cs/db/packages/
+/packages
+packages/
