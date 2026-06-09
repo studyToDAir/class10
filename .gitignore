@@ -5,3 +5,4 @@ bin/
 workspace_cs/db/packages/
 /packages
 packages/
+.vs/

@@ -30,7 +30,7 @@ namespace WebView
             // CEF
             // Chrominum Embedded Framework
 
-            string url = "https://naver.com";
+            string url = "http://192.168.0.102:8080/saeroi";
 
             // 브라우저 세팅
             CefSettings settings = new CefSettings();
